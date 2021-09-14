@@ -8,27 +8,27 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
-@Path("/kaban")
+@Path("/kaban/boards")
 @Produces({"application/json", "application/xml"})
 public class BoardResource {
 
     Service service = Service.instance;
 
     @GET
-    @Path("/boards")
+    @Path("/")
     public String getAllBoards(){
         return service.getAllBoardIds().toString();
     }
 
     @POST
-    @Path("/board/{title}")
+    @Path("/{title}")
     public Response createBoard(@PathParam("title") String title) {
             service.createNewBoard(title);
         return Response.ok().build();
     }
 
     @GET
-    @Path("board/{id}")
+    @Path("/{id}")
     public Board getBoard(@PathParam("id") Long id) {
         return service.getBoardFromId(id);
     }

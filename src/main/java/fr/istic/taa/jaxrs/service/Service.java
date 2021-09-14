@@ -2,6 +2,7 @@ package fr.istic.taa.jaxrs.service;
 
 import fr.istic.taa.jaxrs.service.dao.DAO;
 import fr.istic.taa.jaxrs.service.domain.Board;
+import fr.istic.taa.jaxrs.service.domain.Category;
 import fr.istic.taa.jaxrs.service.domain.Post;
 
 import java.util.Collection;
@@ -18,35 +19,11 @@ public class Service {
         dao = new DAO();
     }
 
+
+    /*** BOARDS ***/
+
     public Board getBoardFromId(long id){
         return dao.findBoardFromId(id);
-    }
-
-    public List<Long> getAllPostsIds() {
-        List<Post> list = dao.getPosts();
-        LinkedList<Long> result = new LinkedList<>();
-        for (Post post : list) {
-            result.addLast(post.getId());
-        }
-
-        return result;
-    }
-
-    public List<Long> getAllCategoryIds() {
-        List<Post> list = dao.getPosts();
-        LinkedList<Long> result = new LinkedList<>();
-        for (Post post : list) {
-            result.addLast(post.getId());
-        }
-
-        return result;
-    }
-
-    public void addPost(Long boardId,Post post) {
-        Board board = dao.findBoardFromId(boardId);
-        board.addPost(post);
-        dao.addPost(post);
-        dao.updateBoard(board);
     }
 
     public List<Long> getAllBoardIds() {
@@ -65,4 +42,63 @@ public class Service {
         dao.addBoard(board);
 
     }
+
+    /*** POSTS***/
+
+    public Post getPostFromId(long id){
+        return dao.findPostFromId(id);
+    }
+
+    public List<Long> getAllPostsIds() {
+        List<Post> list = dao.getPosts();
+        LinkedList<Long> result = new LinkedList<>();
+        for (Post post : list) {
+            result.addLast(post.getId());
+        }
+
+        return result;
+    }
+
+    public void addPost(Long boardId,Post post) {
+        Board board = dao.findBoardFromId(boardId);
+        board.addPost(post);
+        dao.addPost(post);
+        dao.updateBoard(board);
+    }
+
+    /*** CATEGORY ***/
+
+    public Category getCategoryFromId(long id){
+        return null;
+    }
+
+    public List<Long> getAllCategoryIds() {
+        List<Post> list = dao.getPosts();
+        LinkedList<Long> result = new LinkedList<>();
+        for (Post post : list) {
+            result.addLast(post.getId());
+        }
+
+        return result;
+    }
+
+    public void addCategory(Category category) {
+
+    }
+    /*** TAGS ***/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

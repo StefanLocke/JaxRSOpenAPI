@@ -9,7 +9,7 @@ import java.util.List;
 public class DAO {
 
     public DAO() {
-        manager = Persistence.createEntityManagerFactory("mysql").createEntityManager();
+        manager = Persistence.createEntityManagerFactory("dev").createEntityManager();
         tx = manager.getTransaction();
     }
 
@@ -53,6 +53,10 @@ public class DAO {
     }
 
     public Post findPostFromId(long id) {
+        return manager.find(Post.class,id);
+    }
+
+    public Post findCategoryFromId(long id) {
         return manager.find(Post.class,id);
     }
 
