@@ -2,6 +2,7 @@ package fr.istic.taa.jaxrs.rest;
 
 import fr.istic.taa.jaxrs.service.Service;
 import fr.istic.taa.jaxrs.service.domain.Board;
+import fr.istic.taa.jaxrs.service.dto.BoardDTO;
 import io.swagger.v3.oas.annotations.Parameter;
 
 import javax.ws.rs.*;
@@ -15,9 +16,15 @@ public class BoardResource {
     Service service = Service.instance;
 
     @GET
+    @Path("/ids")
+    public String getAllBoardsIds(){
+        return service.getAllBoardsIds().toString();
+    }
+
+    @GET
     @Path("/")
-    public String getAllBoards(){
-        return service.getAllBoardIds().toString();
+    public List<BoardDTO> getAllBoards(){
+        return service.getAllBoards();
     }
 
     @POST
@@ -29,7 +36,7 @@ public class BoardResource {
 
     @GET
     @Path("/{id}")
-    public Board getBoard(@PathParam("id") Long id) {
+    public BoardDTO getBoard(@PathParam("id") Long id) {
         return service.getBoardFromId(id);
     }
 }

@@ -1,13 +1,17 @@
 package fr.istic.taa.jaxrs.service.domain;
 
+import fr.istic.taa.jaxrs.service.dto.PostDTO;
+import fr.istic.taa.jaxrs.service.interfaces.DTOAble;
+
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @XmlRootElement(name = "post")
-public class Post {
+public class Post implements Serializable, DTOAble<PostDTO> {
 
     long id;
 
@@ -17,11 +21,15 @@ public class Post {
 
     Category category;
 
+    Board board;
+
     List<Tag> tags;
+
+
 
     @Id
     @GeneratedValue
-    @XmlElement(name = "ID")
+    @XmlElement(name = "id")
     public long getId() {
         return id;
     }
@@ -66,5 +74,22 @@ public class Post {
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+
+
+
+    @OneToOne
+    @XmlElement(name = "board")
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    @Override
+    public PostDTO toDTO() {
+        return new PostDTO(this);
     }
 }
