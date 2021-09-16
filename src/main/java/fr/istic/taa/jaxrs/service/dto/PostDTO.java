@@ -16,11 +16,9 @@ public class PostDTO {
         id = post.getId();
         title = post.getTitle();
         content = post.getContent();
-        categoryDTO = post.getCategory().toDTO();
-        tagDTO = new LinkedList<>();
-        for (Tag tag : post.getTags()){
-            tagDTO.add(tag.toDTO());
-        }
+        categoryDTO = post.getCategory()!=null?post.getCategory().toDTO():null;
+
+
     }
     @XmlElement(name = "id")
     long id;

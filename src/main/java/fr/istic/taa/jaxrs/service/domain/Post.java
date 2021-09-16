@@ -7,12 +7,16 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @XmlRootElement(name = "post")
 public class Post implements Serializable, DTOAble<PostDTO> {
 
+    public Post() {
+        tags = new LinkedList<>();
+    }
     long id;
 
     String title;

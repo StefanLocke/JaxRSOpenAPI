@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/kaban/boards")
-@Produces({"application/json", "application/xml"})
+@Produces({"application/json"})
 public class BoardResource {
 
     Service service = Service.instance;
