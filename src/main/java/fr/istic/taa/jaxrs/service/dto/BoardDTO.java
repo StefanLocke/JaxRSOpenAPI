@@ -14,23 +14,17 @@ public class BoardDTO {
     public BoardDTO(Board board) {
         id = board.getId();
         title = board.getTitle();
-        posts = new LinkedList<>();
-        for (Post post : board.getPosts()) {
-            posts.add(post.toDTO());
-        }
-        categories = new LinkedList<>();
+        categoriesId = new LinkedList<>();
         for (Category category : board.getCategories()) {
-            categories.add(category.toDTO());
+            categoriesId.add(category.getId());
         }
     }
     @XmlElement(name = "id")
     long id;
     @XmlElement(name = "title")
     String title;
-    @XmlElement(name = "posts")
-    List<PostDTO> posts;
     @XmlElement(name = "categories")
-    List<CategoryDTO> categories;
+    List<Long> categoriesId;
 
 
 }

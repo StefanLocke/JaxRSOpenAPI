@@ -25,8 +25,6 @@ public class Post implements Serializable, DTOAble<PostDTO> {
 
     Category category;
 
-    Board board;
-
     List<Tag> tags;
 
 
@@ -78,18 +76,6 @@ public class Post implements Serializable, DTOAble<PostDTO> {
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
-    }
-
-
-
-    @OneToOne
-    @XmlElement(name = "board")
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
     }
 
     @Override

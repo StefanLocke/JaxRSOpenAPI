@@ -4,6 +4,7 @@ import fr.istic.taa.jaxrs.service.Service;
 import fr.istic.taa.jaxrs.service.domain.Board;
 import fr.istic.taa.jaxrs.service.domain.Category;
 import fr.istic.taa.jaxrs.service.domain.Post;
+import fr.istic.taa.jaxrs.service.dto.BoardDTO;
 import fr.istic.taa.jaxrs.service.dto.CategoryDTO;
 import io.swagger.v3.oas.annotations.Parameter;
 
@@ -11,7 +12,7 @@ import javax.validation.constraints.Positive;
 import javax.ws.rs.*;
 import java.util.List;
 
-@Path("/kaban/Category")
+@Path("/kaban/category")
 @Produces({"application/json", "application/xml"})
 public class CategoryResource {
 
@@ -36,9 +37,10 @@ public class CategoryResource {
         service.addCategory(boardId, category);
     }
 
-    @POST
-    @Path("/{postId}/{categoryId}")
-    public void setCategory(@PathParam("postId") long postId,@PathParam("categoryId") long categoryId){
-        service.setPostCategory(postId,categoryId);
+    @GET
+    @Path("/{id}")
+    public CategoryDTO getCategory(@PathParam("id") Long id) {
+        return service.getCategoryFromId(id);
     }
+
 }

@@ -2,8 +2,10 @@ package fr.istic.taa.jaxrs.rest;
 
 import fr.istic.taa.jaxrs.service.Service;
 import fr.istic.taa.jaxrs.service.domain.Board;
+import fr.istic.taa.jaxrs.service.domain.Category;
 import fr.istic.taa.jaxrs.service.domain.Post;
 import fr.istic.taa.jaxrs.service.dto.BoardDTO;
+import fr.istic.taa.jaxrs.service.dto.CategoryDTO;
 import fr.istic.taa.jaxrs.service.dto.PostDTO;
 import io.swagger.v3.oas.annotations.Parameter;
 
@@ -29,23 +31,18 @@ public class PostResource {
         return service.getAllPosts();
     }
 
+
     @POST
-    @Path("/{id}")
+    @Path("/{categoryId}")
     @Consumes("application/json")
-    public Response createPost(@PathParam("id") long boardId, @Parameter(description = "post to add", required = true)Post post) {
-        System.out.println(post);
-        service.addPost(boardId,post);
-        return Response.ok().build();
+    public void addPost(@PathParam("categoryId") long categoryId,@Parameter(description = "post to add", required = true) Post post) {
+        service.addPost(categoryId, post);
     }
 
     @GET
     @Path("/{id}")
-    public BoardDTO getBoard(@PathParam("id") Long id) {
-
-        return service.getBoardFromId(id);
+    public PostDTO getPost(@PathParam("id") Long id) {
+        return service.getPostFromId(id);
     }
-
-
-
 
 }

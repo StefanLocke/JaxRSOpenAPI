@@ -19,13 +19,10 @@ import java.util.List;
 public class Board implements Serializable, DTOAble<BoardDTO> {
 
     public Board(){
-        posts = new LinkedList<>();
         categories = new LinkedList<>();
     }
 
     long id;
-
-    List<Post> posts;
 
     List<Category> categories;
 
@@ -40,20 +37,6 @@ public class Board implements Serializable, DTOAble<BoardDTO> {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @OneToMany
-    @XmlElement(name = "posts")
-    public List<Post> getPosts() {
-        return posts;
-    }
-
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-
-    public void addPost(Post post) {
-        this.posts.add(post);
     }
 
     @XmlElement(name = "title")
@@ -77,8 +60,6 @@ public class Board implements Serializable, DTOAble<BoardDTO> {
 
     @Override
     public BoardDTO toDTO() {
-        BoardDTO dto = new BoardDTO(this);
-
-        return dto;
+        return  new BoardDTO(this);
     }
 }

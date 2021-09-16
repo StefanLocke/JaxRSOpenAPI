@@ -48,7 +48,6 @@ public class Service {
         for (Board board : list) {
             result.addLast(board.getId());
         }
-
         return result;
     }
 
@@ -91,28 +90,14 @@ public class Service {
         return list;
     }
 
-    public void addPost(Long boardId,Post post) {
-        Board board = boardDAO.findOne(boardId);
-        board.addPost(post);
-        post.setBoard(board);
-        postDAO.save(post);
-        boardDAO.update(board);
-    }
-
-    public void setPostCategory(Long postId,Long categoryId) {
-        Post post = postDAO.findOne(postId);
+    public void addPost(Long categoryId,Post post) {
         Category category = categoryDAO.findOne(categoryId);
-        if (post == null || category == null) {
-            return;
-        }
-       if (post.getBoard() != category.getBoard()) {
-            return;
-        }
+        category.addPost(post);
         post.setCategory(category);
-        category.getPosts().add(post);
-        postDAO.update(post);
+        postDAO.save(post);
         categoryDAO.update(category);
     }
+
 
     /*** CATEGORY ***/
 
@@ -137,17 +122,11 @@ public class Service {
         return list;
     }
     public void addCategory(long boardId,Category category) {
-
-
         Board board = boardDAO.findOne(boardId);
         board.getCategories().add(category);
         category.setBoard(board);
-
         categoryDAO.save(category);
         boardDAO.update(board);
-
-
-
     }
 
 

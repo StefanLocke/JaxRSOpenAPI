@@ -7,12 +7,16 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
 @XmlRootElement(name = "category")
 public class Category implements Serializable, DTOAble<CategoryDTO> {
 
+    public Category(){
+        posts = new LinkedList<>();
+    }
 
     long id;
 
@@ -41,9 +45,6 @@ public class Category implements Serializable, DTOAble<CategoryDTO> {
     public void setName(String name) {
         this.name = name;
     }
-
-
-
    @OneToMany
    @XmlElement(name = "posts")
     public List<Post> getPosts() {
@@ -61,6 +62,10 @@ public class Category implements Serializable, DTOAble<CategoryDTO> {
     @XmlElement(name = "boards")
     public void setBoard(Board board) {
         this.board = board;
+    }
+
+    public void addPost(Post post) {
+        posts.add(post);
     }
 
     @Override
