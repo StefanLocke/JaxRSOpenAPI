@@ -17,12 +17,50 @@ public class PostDTO {
         title = post.getTitle();
         content = post.getContent();
     }
-    @XmlElement(name = "id")
+
     long id;
-    @XmlElement(name = "title")
+
     String title;
-    @XmlElement(name = "content")
+
     String content;
-    @XmlElement(name = "tags")
+
     List<TagDTO> tagDTO;
+
+    @XmlElement(name = "id")
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @XmlElement(name = "title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @XmlElement(name = "content")
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+    @XmlElement(name = "tags")
+    public List<TagDTO> getTagDTO() {
+        return tagDTO;
+    }
+
+    public void setTagDTO(List<TagDTO> tagDTO) {
+        this.tagDTO = tagDTO;
+    }
+
+
+
 }

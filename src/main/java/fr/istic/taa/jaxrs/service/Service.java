@@ -67,6 +67,7 @@ public class Service {
 
     }
     public void removeBoard(Long id) {
+
         boardDAO.delete(boardDAO.findOne(id));
     }
 
@@ -106,7 +107,12 @@ public class Service {
     }
 
     public void removePost(Long id) {
-        postDAO.delete(postDAO.findOne(id));
+       Post p = postDAO.findOne(id);
+        Category c = p.getCategory();
+        p.getCategory().getPosts().remove(p);
+        p.setCategory(null);
+        categoryDAO.update(c);
+        postDAO.delete(p);
     }
 
 

@@ -19,10 +19,36 @@ public class CategoryDTO {
             postsId.add(post.getId());
         }
     }
-    @XmlElement(name = "id")
+
     long id;
-    @XmlElement(name = "name")
+
     String name;
-    @XmlElement(name = "posts")
+
     List<Long> postsId;
+
+    @XmlElement(name = "id")
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    @XmlElement(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @XmlElement(name = "posts")
+    public List<Long> getPostsId() {
+        return postsId;
+    }
+
+    public void setPostsId(List<Long> postsId) {
+        this.postsId = postsId;
+    }
 }

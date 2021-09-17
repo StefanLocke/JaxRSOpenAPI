@@ -45,7 +45,8 @@ public class Category implements Serializable, DTOAble<CategoryDTO> {
     public void setName(String name) {
         this.name = name;
     }
-   @OneToMany
+
+   @OneToMany(mappedBy = "category")
    @XmlElement(name = "posts")
     public List<Post> getPosts() {
         return posts;
@@ -55,11 +56,12 @@ public class Category implements Serializable, DTOAble<CategoryDTO> {
         this.posts = posts;
     }
 
-    @OneToOne
+    @ManyToOne
+    @XmlElement(name = "boards")
     public Board getBoard() {
         return board;
     }
-    @XmlElement(name = "boards")
+
     public void setBoard(Board board) {
         this.board = board;
     }

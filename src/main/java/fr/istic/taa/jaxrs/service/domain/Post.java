@@ -58,7 +58,7 @@ public class Post implements Serializable, DTOAble<PostDTO> {
         this.content = content;
     }
 
-    @OneToOne
+    @ManyToOne
     @XmlElement(name = "category")
     public Category getCategory() {
         return category;

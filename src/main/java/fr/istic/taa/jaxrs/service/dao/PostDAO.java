@@ -5,4 +5,6 @@ import fr.istic.taa.jaxrs.service.domain.Board;
 import fr.istic.taa.jaxrs.service.domain.Post;
 
 public class PostDAO extends AbstractJpaDao<Long, Post> {
+
+
 }

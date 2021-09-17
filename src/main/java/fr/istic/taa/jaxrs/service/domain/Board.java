@@ -48,7 +48,7 @@ public class Board implements Serializable, DTOAble<BoardDTO> {
         this.title = title;
     }
 
-    @OneToMany
+    @OneToMany(mappedBy = "board")
     @XmlElement(name = "categories")
     public List<Category> getCategories() {
         return categories;

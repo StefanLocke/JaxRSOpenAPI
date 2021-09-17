@@ -19,12 +19,36 @@ public class BoardDTO {
             categoriesId.add(category.getId());
         }
     }
-    @XmlElement(name = "id")
+
     long id;
-    @XmlElement(name = "title")
+
     String title;
-    @XmlElement(name = "categories")
+
     List<Long> categoriesId;
 
+    @XmlElement(name = "id")
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    @XmlElement(name = "title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    @XmlElement(name = "categories")
+    public List<Long> getCategoriesId() {
+        return categoriesId;
+    }
+
+    public void setCategoriesId(List<Long> categoriesId) {
+        this.categoriesId = categoriesId;
+    }
 }

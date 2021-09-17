@@ -43,6 +43,13 @@ public class PostResource {
         service.addPost(categoryId, post);
     }
 
+    @DELETE
+    @Path("/{postId}")
+    @Tag(name="Post")
+    public void removePost(@PathParam("postId") long postId) {
+        service.removePost(postId);
+    }
+
     @GET
     @Path("/{id}")
     @Tag(name="Post")
