@@ -66,6 +66,9 @@ public class Service {
         boardDAO.save(board);
 
     }
+    public void removeBoard(Long id) {
+        boardDAO.delete(boardDAO.findOne(id));
+    }
 
     /*** POSTS***/
 
@@ -98,6 +101,14 @@ public class Service {
         categoryDAO.update(category);
     }
 
+    public void movePost(long postId,long categoryId) {
+
+    }
+
+    public void removePost(Long id) {
+        postDAO.delete(postDAO.findOne(id));
+    }
+
 
     /*** CATEGORY ***/
 
@@ -127,6 +138,10 @@ public class Service {
         category.setBoard(board);
         categoryDAO.save(category);
         boardDAO.update(board);
+    }
+
+    public void removeCategory(Long id) {
+        categoryDAO.delete(categoryDAO.findOne(id));
     }
 
 

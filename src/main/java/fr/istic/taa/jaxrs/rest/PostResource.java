@@ -8,6 +8,7 @@ import fr.istic.taa.jaxrs.service.dto.BoardDTO;
 import fr.istic.taa.jaxrs.service.dto.CategoryDTO;
 import fr.istic.taa.jaxrs.service.dto.PostDTO;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -21,12 +22,14 @@ public class PostResource {
 
     @GET
     @Path("/id")
+    @Tag(name="Post")
     public String getAllPostsIds(){
         return service.getAllPostsIds().toString();
     }
 
     @GET
     @Path("/")
+    @Tag(name="Post")
     public List<PostDTO> getAllPosts(){
         return service.getAllPosts();
     }
@@ -35,12 +38,14 @@ public class PostResource {
     @POST
     @Path("/{categoryId}")
     @Consumes("application/json")
+    @Tag(name="Post")
     public void addPost(@PathParam("categoryId") long categoryId,@Parameter(description = "post to add", required = true) Post post) {
         service.addPost(categoryId, post);
     }
 
     @GET
     @Path("/{id}")
+    @Tag(name="Post")
     public PostDTO getPost(@PathParam("id") Long id) {
         return service.getPostFromId(id);
     }
