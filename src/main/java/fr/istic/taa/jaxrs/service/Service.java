@@ -1,5 +1,6 @@
 package fr.istic.taa.jaxrs.service;
 
+import fr.istic.taa.jaxrs.rest.BoardResource;
 import fr.istic.taa.jaxrs.service.dao.*;
 import fr.istic.taa.jaxrs.service.domain.Board;
 import fr.istic.taa.jaxrs.service.domain.Category;
@@ -8,12 +9,14 @@ import fr.istic.taa.jaxrs.service.domain.Tag;
 import fr.istic.taa.jaxrs.service.dto.BoardDTO;
 import fr.istic.taa.jaxrs.service.dto.CategoryDTO;
 import fr.istic.taa.jaxrs.service.dto.PostDTO;
+import org.apache.log4j.Logger;
 
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Service {
+
 
     private PostDAO postDAO;
     private BoardDAO boardDAO;
